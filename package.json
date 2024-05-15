@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.4",
+    "redux": "^5.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   }
