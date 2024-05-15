@@ -12,12 +12,17 @@ interface Action {
 
 // Reducer
 function reducer(state = 10, action: Action){
-    
-    if( action.type === 'INCREMENTAR' ){
-        return state += 1;
+    // Todo se debe resolver dentro del reducer, no se debe tener interacción con nada fuera de ella
+    switch( action.type ){
+        case 'INCREMENTAR':
+            return state += 1;
+        case 'DECREMENTAR':
+            return state -= 1;
+        case 'MULTIPLICAR':
+            return state *= action.payload;
+        default:
+            return state;
     }
-
-    return state; // es regla siempre devolver el estado
 }
 
 // Usando el reducer
@@ -26,3 +31,16 @@ const incrementAction: Action = {
 };
 
 console.log(reducer(10, incrementAction));
+
+const decrementadorAction: Action = {
+    type: 'DECREMENTAR'
+};
+
+console.log(reducer(10, decrementadorAction));
+
+const multiplicarAction: Action = {
+    type: 'MULTIPLICAR',
+    payload: 2
+};
+
+console.log(reducer(10, multiplicarAction));
